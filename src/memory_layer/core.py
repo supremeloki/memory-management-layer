@@ -5,3 +5,34 @@ from collections import deque
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Callable, Iterable, Sequence
+
+
+class MemoryLayerError(Exception):
+    pass
+
+
+class EmptyMemoryError(MemoryLayerError):
+    pass
+
+
+class MemoryTier(str, Enum):
+    WORKING = "working"
+    EPISODIC = "episodic"
+    SEMANTIC = "semantic"
+
+
+@dataclass(frozen=True)
+class MemoryEntry:
+    key: str
+    content: str
+    tier: MemoryTier
+    created_at: float
+    importance: float = 1.0
+    last_accessed_at: float = 0.0
+    access_count: int = 0
+
+    def with_access(self, accessed_at: float) -> "MemoryEntry":
+        return MemoryEntry(
+            key=self.key,
+            content=self.content,
+            tier=self.tier,
