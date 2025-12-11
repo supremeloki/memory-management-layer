@@ -36,3 +36,5 @@ class MemoryEntry:
             key=self.key,
             content=self.content,
             tier=self.tier,
+            created_at=self.created_at,
+            importance=self.importance,
