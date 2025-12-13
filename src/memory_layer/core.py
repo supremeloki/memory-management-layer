@@ -40,3 +40,4 @@ class MemoryEntry:
             importance=self.importance,
             last_accessed_at=accessed_at,
             access_count=self.access_count + 1,
+        )
