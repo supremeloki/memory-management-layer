@@ -41,3 +41,5 @@ class MemoryEntry:
             last_accessed_at=accessed_at,
             access_count=self.access_count + 1,
         )
+
+    @property
