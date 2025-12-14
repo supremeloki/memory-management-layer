@@ -43,3 +43,5 @@ class MemoryEntry:
         )
 
     @property
+    def retrieval_score(self) -> float:
+        recency_bonus = 1.0 / (1.0 + max(0.0, self.last_accessed_at - self.created_at))
