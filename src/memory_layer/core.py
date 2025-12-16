@@ -50,3 +50,5 @@ class MemoryEntry:
 
 @dataclass(frozen=True)
 class WorkingWindow:
+    entries: tuple[MemoryEntry, ...]
+    capacity: int
