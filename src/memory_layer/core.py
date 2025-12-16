@@ -48,3 +48,5 @@ class MemoryEntry:
         return self.importance * (1.0 + 0.1 * self.access_count) * (0.5 + recency_bonus)
 
 
+@dataclass(frozen=True)
+class WorkingWindow:
