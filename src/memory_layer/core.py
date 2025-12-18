@@ -57,3 +57,5 @@ class WorkingWindow:
     def is_full(self) -> bool:
         return len(self.entries) >= self.capacity
 
+
+@dataclass(frozen=True)
