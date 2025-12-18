@@ -55,3 +55,5 @@ class WorkingWindow:
 
     @property
     def is_full(self) -> bool:
+        return len(self.entries) >= self.capacity
+
