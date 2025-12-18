@@ -52,3 +52,4 @@ class MemoryEntry:
 class WorkingWindow:
     entries: tuple[MemoryEntry, ...]
     capacity: int
+
