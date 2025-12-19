@@ -64,3 +64,5 @@ class PromotionReport:
     evicted_keys: tuple[str, ...]
 
 
+class MemoryManager:
+    def __init__(self,
