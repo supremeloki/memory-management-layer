@@ -60,3 +60,5 @@ class WorkingWindow:
 
 @dataclass(frozen=True)
 class PromotionReport:
+    promoted_keys: tuple[str, ...]
+    evicted_keys: tuple[str, ...]
