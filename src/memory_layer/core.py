@@ -59,3 +59,4 @@ class WorkingWindow:
 
 
 @dataclass(frozen=True)
+class PromotionReport:
