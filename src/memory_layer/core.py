@@ -67,3 +67,5 @@ class PromotionReport:
 class MemoryManager:
     def __init__(self,
                  working_capacity: int = 8,
+                 episodic_capacity: int = 100,
+                 semantic_capacity: int = 500,
