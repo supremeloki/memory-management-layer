@@ -73,3 +73,4 @@ class MemoryManager:
         if working_capacity < 1 or episodic_capacity < 1 or semantic_capacity < 1:
             raise MemoryLayerError("capacities must be >= 1")
         self._clock = clock or time.time
+        self._working: deque[MemoryEntry] = deque(maxlen=working_capacity)
