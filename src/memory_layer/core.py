@@ -74,3 +74,5 @@ class MemoryManager:
             raise MemoryLayerError("capacities must be >= 1")
         self._clock = clock or time.time
         self._working: deque[MemoryEntry] = deque(maxlen=working_capacity)
+        self._episodic: dict[str, MemoryEntry] = {}
+        self._semantic: dict[str, MemoryEntry] = {}
