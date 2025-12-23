@@ -76,3 +76,5 @@ class MemoryManager:
         self._working: deque[MemoryEntry] = deque(maxlen=working_capacity)
         self._episodic: dict[str, MemoryEntry] = {}
         self._semantic: dict[str, MemoryEntry] = {}
+        self._episodic_capacity = episodic_capacity
+        self._semantic_capacity = semantic_capacity
