@@ -78,3 +78,4 @@ class MemoryManager:
         self._semantic: dict[str, MemoryEntry] = {}
         self._episodic_capacity = episodic_capacity
         self._semantic_capacity = semantic_capacity
+
