@@ -81,3 +81,5 @@ class MemoryManager:
 
     @property
     def now(self) -> float:
+        return self._clock()
+
