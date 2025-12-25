@@ -83,3 +83,5 @@ class MemoryManager:
     def now(self) -> float:
         return self._clock()
 
+    def store(self, key: str, content: str, tier: MemoryTier = MemoryTier.WORKING,
+              importance: float = 1.0) -> MemoryEntry:
