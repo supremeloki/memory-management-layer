@@ -88,3 +88,5 @@ class MemoryManager:
         entry = MemoryEntry(
             key=key,
             content=content,
+            tier=tier,
+            created_at=self.now,
