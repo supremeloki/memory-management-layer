@@ -86,3 +86,5 @@ class MemoryManager:
     def store(self, key: str, content: str, tier: MemoryTier = MemoryTier.WORKING,
               importance: float = 1.0) -> MemoryEntry:
         entry = MemoryEntry(
+            key=key,
+            content=content,
