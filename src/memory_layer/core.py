@@ -90,3 +90,5 @@ class MemoryManager:
             content=content,
             tier=tier,
             created_at=self.now,
+            importance=importance,
+        )
