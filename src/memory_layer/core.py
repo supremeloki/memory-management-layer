@@ -92,3 +92,4 @@ class MemoryManager:
             created_at=self.now,
             importance=importance,
         )
+        if tier is MemoryTier.WORKING:
