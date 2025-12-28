@@ -97,3 +97,5 @@ class MemoryManager:
         elif tier is MemoryTier.EPISODIC:
             self._store_episodic(entry)
         else:
+            self._store_semantic(entry)
+        return entry
