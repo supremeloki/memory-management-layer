@@ -95,3 +95,5 @@ class MemoryManager:
         if tier is MemoryTier.WORKING:
             self._working.append(entry)
         elif tier is MemoryTier.EPISODIC:
+            self._store_episodic(entry)
+        else:
