@@ -99,3 +99,4 @@ class MemoryManager:
         else:
             self._store_semantic(entry)
         return entry
+
