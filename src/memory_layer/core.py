@@ -100,3 +100,5 @@ class MemoryManager:
             self._store_semantic(entry)
         return entry
 
+    def _store_episodic(self, entry: MemoryEntry) -> None:
+        self._episodic[entry.key] = entry
