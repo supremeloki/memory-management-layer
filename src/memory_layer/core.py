@@ -102,3 +102,5 @@ class MemoryManager:
 
     def _store_episodic(self, entry: MemoryEntry) -> None:
         self._episodic[entry.key] = entry
+        while len(self._episodic) > self._episodic_capacity:
+            weakest = min(
