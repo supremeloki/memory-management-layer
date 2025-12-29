@@ -104,3 +104,4 @@ class MemoryManager:
         self._episodic[entry.key] = entry
         while len(self._episodic) > self._episodic_capacity:
             weakest = min(
+                self._episodic.values(),
