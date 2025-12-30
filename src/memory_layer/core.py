@@ -109,3 +109,5 @@ class MemoryManager:
             )
             del self._episodic[weakest.key]
 
+    def _store_semantic(self, entry: MemoryEntry) -> None:
+        self._semantic[entry.key] = entry
