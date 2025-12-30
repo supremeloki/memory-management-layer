@@ -107,3 +107,5 @@ class MemoryManager:
                 self._episodic.values(),
                 key=lambda e: (e.importance, e.created_at),
             )
+            del self._episodic[weakest.key]
+
