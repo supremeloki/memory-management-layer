@@ -80,3 +80,4 @@ def test_episodic_eviction_by_importance_then_age(manager, clock):
 def test_repeated_access_promotes_to_semantic(manager):
     manager.store("fact", "sky is blue", tier=MemoryTier.EPISODIC)
     for _ in range(3):
+        manager.recall("fact")
