@@ -82,3 +82,4 @@ def test_repeated_access_promotes_to_semantic(manager):
     for _ in range(3):
         manager.recall("fact")
     assert manager.size_report["semantic"] == 1
+    assert manager.size_report["episodic"] == 0
