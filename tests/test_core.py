@@ -81,3 +81,4 @@ def test_repeated_access_promotes_to_semantic(manager):
     manager.store("fact", "sky is blue", tier=MemoryTier.EPISODIC)
     for _ in range(3):
         manager.recall("fact")
+    assert manager.size_report["semantic"] == 1
