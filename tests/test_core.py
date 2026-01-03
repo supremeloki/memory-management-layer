@@ -83,3 +83,5 @@ def test_repeated_access_promotes_to_semantic(manager):
         manager.recall("fact")
     assert manager.size_report["semantic"] == 1
     assert manager.size_report["episodic"] == 0
+    promoted = manager.recall("fact")
+    assert promoted.tier is MemoryTier.SEMANTIC
