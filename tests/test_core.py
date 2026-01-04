@@ -87,3 +87,4 @@ def test_repeated_access_promotes_to_semantic(manager):
     assert promoted.tier is MemoryTier.SEMANTIC
 
 
+def test_semantic_capacity_enforced_with_score_eviction(clock):
