@@ -88,3 +88,5 @@ def test_repeated_access_promotes_to_semantic(manager):
 
 
 def test_semantic_capacity_enforced_with_score_eviction(clock):
+    tiny = MemoryManager(working_capacity=2, episodic_capacity=2,
+                         semantic_capacity=2, clock=clock)
