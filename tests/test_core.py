@@ -91,3 +91,4 @@ def test_semantic_capacity_enforced_with_score_eviction(clock):
     tiny = MemoryManager(working_capacity=2, episodic_capacity=2,
                          semantic_capacity=2, clock=clock)
     tiny.store("s1", "a", tier=MemoryTier.SEMANTIC, importance=5.0)
+    tiny.store("s2", "b", tier=MemoryTier.SEMANTIC, importance=1.0)
