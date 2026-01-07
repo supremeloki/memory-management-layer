@@ -93,3 +93,4 @@ def test_semantic_capacity_enforced_with_score_eviction(clock):
     tiny.store("s1", "a", tier=MemoryTier.SEMANTIC, importance=5.0)
     tiny.store("s2", "b", tier=MemoryTier.SEMANTIC, importance=1.0)
     tiny.store("s3", "c", tier=MemoryTier.SEMANTIC, importance=1.0)
+    report = tiny.size_report
