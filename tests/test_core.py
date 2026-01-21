@@ -96,3 +96,4 @@ def test_semantic_capacity_enforced_with_score_eviction(clock):
     report = tiny.size_report
     assert report["semantic"] <= 2
 
+
