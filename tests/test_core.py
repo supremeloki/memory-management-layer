@@ -97,3 +97,4 @@ def test_semantic_capacity_enforced_with_score_eviction(clock):
     assert report["semantic"] <= 2
 
 
+def test_search_by_prefix_ranks_and_dedupes(manager):
