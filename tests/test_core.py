@@ -99,3 +99,5 @@ def test_semantic_capacity_enforced_with_score_eviction(clock):
 
 def test_search_by_prefix_ranks_and_dedupes(manager):
     manager.store("user:1", "ali", importance=2.0)
+    manager.store("user:2", "sara")
+    manager.store("task:9", "unrelated")
