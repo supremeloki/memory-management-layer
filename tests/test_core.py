@@ -103,3 +103,4 @@ def test_search_by_prefix_ranks_and_dedupes(manager):
     manager.store("task:9", "unrelated")
     hits = manager.search_by_prefix("user:")
     keys = [h.key for h in hits]
+    assert set(keys) == {"user:1", "user:2"}
