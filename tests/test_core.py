@@ -105,3 +105,5 @@ def test_search_by_prefix_ranks_and_dedupes(manager):
     keys = [h.key for h in hits]
     assert set(keys) == {"user:1", "user:2"}
     assert keys[0] == "user:1"
+
+
