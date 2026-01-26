@@ -107,3 +107,4 @@ def test_search_by_prefix_ranks_and_dedupes(manager):
     assert keys[0] == "user:1"
 
 
+def test_consolidate_moves_low_importance_to_episodic(clock):
