@@ -109,3 +109,4 @@ def test_search_by_prefix_ranks_and_dedupes(manager):
 
 def test_consolidate_moves_low_importance_to_episodic(clock):
     consolidator = MemoryManager(working_capacity=4, episodic_capacity=5,
+                                 semantic_capacity=5, clock=clock)
