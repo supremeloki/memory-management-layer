@@ -113,3 +113,4 @@ def test_consolidate_moves_low_importance_to_episodic(clock):
     consolidator.store("hot", "keep", importance=3.0)
     consolidator.store("cold-a", "move", importance=0.2)
     consolidator.store("cold-b", "move", importance=0.1)
+    report = consolidator.consolidate()
