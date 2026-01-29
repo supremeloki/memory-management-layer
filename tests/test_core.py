@@ -115,3 +115,4 @@ def test_consolidate_moves_low_importance_to_episodic(clock):
     consolidator.store("cold-b", "move", importance=0.1)
     report = consolidator.consolidate()
     assert "cold-b" in report.promoted_keys or "cold-a" in report.promoted_keys
+    sizes = consolidator.size_report
