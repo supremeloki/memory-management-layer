@@ -118,3 +118,4 @@ def test_consolidate_moves_low_importance_to_episodic(clock):
     sizes = consolidator.size_report
     assert sizes["episodic"] >= 1
 
+
