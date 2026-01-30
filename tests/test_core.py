@@ -121,3 +121,5 @@ def test_consolidate_moves_low_importance_to_episodic(clock):
 
 def test_entry_access_updates_recency(manager, clock):
     manager.store("k", "v", tier=MemoryTier.EPISODIC)
+    clock.advance(50)
+    first = manager.recall("k")
