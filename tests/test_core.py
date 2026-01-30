@@ -119,3 +119,4 @@ def test_consolidate_moves_low_importance_to_episodic(clock):
     assert sizes["episodic"] >= 1
 
 
+def test_entry_access_updates_recency(manager, clock):
