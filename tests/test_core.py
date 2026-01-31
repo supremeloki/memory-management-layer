@@ -124,3 +124,4 @@ def test_entry_access_updates_recency(manager, clock):
     clock.advance(50)
     first = manager.recall("k")
     clock.advance(10)
+    second = manager.recall("k")
