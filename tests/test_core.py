@@ -125,3 +125,4 @@ def test_entry_access_updates_recency(manager, clock):
     first = manager.recall("k")
     clock.advance(10)
     second = manager.recall("k")
+    assert second.last_accessed_at > first.last_accessed_at
