@@ -129,3 +129,4 @@ def test_entry_access_updates_recency(manager, clock):
     assert second.access_count == 2
 
 
+def test_size_report_shape(manager):
