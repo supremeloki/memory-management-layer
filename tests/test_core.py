@@ -132,3 +132,5 @@ def test_entry_access_updates_recency(manager, clock):
 def test_size_report_shape(manager):
     manager.store("a", "1")
     manager.store("b", "2", tier=MemoryTier.SEMANTIC)
+    report = manager.size_report
+    assert set(report) == {"working", "episodic", "semantic"}
