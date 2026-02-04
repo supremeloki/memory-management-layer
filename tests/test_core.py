@@ -135,3 +135,4 @@ def test_size_report_shape(manager):
     report = manager.size_report
     assert set(report) == {"working", "episodic", "semantic"}
     assert report["working"] == 1
+    assert report["semantic"] == 1
