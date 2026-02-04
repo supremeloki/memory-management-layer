@@ -134,3 +134,4 @@ def test_size_report_shape(manager):
     manager.store("b", "2", tier=MemoryTier.SEMANTIC)
     report = manager.size_report
     assert set(report) == {"working", "episodic", "semantic"}
+    assert report["working"] == 1
