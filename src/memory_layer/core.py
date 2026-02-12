@@ -111,3 +111,86 @@ class MemoryManager:
 
     def _store_semantic(self, entry: MemoryEntry) -> None:
         self._semantic[entry.key] = entry
+        while len(self._semantic) > self._semantic_capacity:
+            weakest = min(
+                self._semantic.values(),
+                key=lambda e: (e.retrieval_score, -e.access_count),
+            )
+            del self._semantic[weakest.key]
+
+    def recall(self, key: str) -> MemoryEntry:
+        for window_entry in reversed(self._working):
+            if window_entry.key == key:
+                refreshed = window_entry.with_access(self.now)
+                return refreshed
+        found = self._episodic.get(key) or self._semantic.get(key)
+        if found is None:
+            raise EmptyMemoryError(f"no memory under {key!r}")
+        refreshed = found.with_access(self.now)
+        if found.tier is MemoryTier.EPISODIC and refreshed.access_count >= 3:
+            self._promote_to_semantic(refreshed)
+            del self._episodic[refreshed.key]
+        elif found.tier is MemoryTier.EPISODIC:
+            self._episodic[key] = refreshed
+        else:
+            self._semantic[key] = refreshed
+        return refreshed
+
+    def _promote_to_semantic(self, entry: MemoryEntry) -> None:
+        consolidated = MemoryEntry(
+            key=entry.key,
+            content=entry.content,
+            tier=MemoryTier.SEMANTIC,
+            created_at=entry.created_at,
+            importance=max(1.5, entry.importance),
+            last_accessed_at=entry.last_accessed_at,
+            access_count=entry.access_count,
+        )
+        self._store_semantic(consolidated)
+
+    def working_window(self) -> WorkingWindow:
+        return WorkingWindow(entries=tuple(self._working),
+                             capacity=self._working.maxlen or 0)
+
+    def search_by_prefix(self, prefix: str) -> list[MemoryEntry]:
+        hits: list[MemoryEntry] = []
+        seen: set[str] = set()
+        pools: Sequence[Iterable[MemoryEntry]] = (
+            reversed(self._working), self._episodic.values(), self._semantic.values(),
+        )
+        for pool in pools:
+            for entry in pool:
+                if entry.key.startswith(prefix) and entry.key not in seen:
+                    seen.add(entry.key)
+                    hits.append(entry)
+        hits.sort(key=lambda e: e.retrieval_score, reverse=True)
+        return hits
+
+    def consolidate(self) -> PromotionReport:
+        promoted: list[str] = []
+        evicted: list[str] = []
+        overflow = max(
+            0, len(self._working) - (self._working.maxlen // 2 if self._working.maxlen else 0)
+        )
+        for _ in range(min(overflow, 3)):
+            candidate = min(
+                self._working,
+                key=lambda e: (e.importance, -e.created_at),
+            )
+            promoted.append(candidate.key)
+            self.store(candidate.key, candidate.content,
+                       tier=MemoryTier.EPISODIC, importance=candidate.importance)
+            self._working.remove(candidate)
+        while len(self._episodic) > self._episodic_capacity:
+            weakest = min(self._episodic.values(), key=lambda e: e.created_at)
+            del self._episodic[weakest.key]
+            evicted.append(weakest.key)
+        return PromotionReport(promoted_keys=tuple(promoted), evicted_keys=tuple(evicted))
+
+    @property
+    def size_report(self) -> dict[str, int]:
+        return {
+            "working": len(self._working),
+            "episodic": len(self._episodic),
+            "semantic": len(self._semantic),
+        }

@@ -1,1 +1,28 @@
 [build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memory-layer"
+version = "0.1.0"
+description = "Three-tier agent memory: working window, episodic store, semantic consolidation with access promotion."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Kooroush Masoumi", email = "kooroushmasoumi@gmail.com" }]
+keywords = ["memory", "agent", "episodic", "semantic"]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
